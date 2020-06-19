@@ -25,71 +25,59 @@
 
     <article>
         <div class="form_choixTypeClient">
-        <form action="page.php" class="hidden1" >
+        <form class="hidden1" >
             <h4>Selectionnez le Type de client</h4>
            <h4> <input type="radio" name="typeClient" value="Particulier" id="Particulier" class="typeClient"/> Client Particulier <br></h4>
            <h4><input type="radio" name="typeClient" value="Entreprise" id="Entreprise" class="typeClient"/> Client Entreprise <br> </h4>
         </div>
         </form>
-        <form action="page.php" class="Particulier hidden">
+        <form id="form2" class="Particulier hidden clientParticulier">
             <h3>Type de compte</h3>
-                <div >
-                <input type="radio" name="typeCompte" value="Compte Courant" id="compte_courant" class="typeCompte"/> Compte Courant <br>
-                <input type="radio" name="typeCompte" value="Compte Epargne" id="compte_epargne" class="typeCompte"/>  Compte Epargne <br>
-                <input type="radio" name="typeCompte" value="Compte Bloque" id="compte_bloque" class="typeCompte"/> Compte Bloque<br>
+                <div>
+                    <input type="radio" name="typeCompte" value="Compte Courant" id="compte_courant" class="typeCompte"/> Compte Courant <br>
+                    <input type="radio" name="typeCompte" value="Compte Epargne" id="compte_epargne" class="typeCompte"/>  Compte Epargne <br>
+                    <input type="radio" name="typeCompte" value="Compte Bloque" id="compte_bloque" class="typeCompte"/> Compte Bloque<br>
                 </div>
                 <div class="champs">
-                    <input type="text" name=""  placeholder="Numero du compte" class="champs_saisi"> <br>
-                    <input type="text" name="" placeholder="Nom Du client" class="champs_saisi"> <br>
+                    <input type="text" name=""  placeholder="Numero du compte"> <br>
+                    <input type="text" name="" placeholder="Nom Du client"> <br>
                 
-                    <input type="text" name="" placeholder="Prenom du client" class="champs_saisi"> <br>
+                    <input type="text" name="" placeholder="Prenom du client"> <br>
                
-                    <input type="text" name="" placeholder="Adresse" class="champs_saisi"> <br>
+                    <input type="text" name="" placeholder="Adresse"> <br>
                 
-                    <input type="number" name="" placeholder="CNI"class="champs_saisi" > <br>
+                    <input type="number" name="" placeholder="CNI" onblur="verifCNI(this)"> <br>
                
-                    <input type="email" name="" placeholder="Email" class="champs_saisi"> <br>
-                    <input type="number" name="" placeholder="Telephone" id="champs_saisi"> <br>
-                </div>
+                    <input type="email" name="" placeholder="Email" onblur="verifMail(this)"> <br>
+                    <input type="number" name="" placeholder="Telephone" onblur="verifTEL"> <br>
                 </div>
                 <div class="hidden compte_courant">
-                    <input type="number" name="" placeholder="Salaire" class="champs_saisi">
-                    <input type="text" name="" placeholder="Profession" class="champs_saisi">
+                    <input type="number" name="" placeholder="Salaire">
+                    <input type="text" name="" placeholder="Profession">
                     <h4>Information de l'employeur:</h4>
-                    <input type="text" name="" placeholder="Nom Employeur" class="champs_saisi">
-                    <input type="text" name="" placeholder="Raison social"class="champs_saisi" >
-                    <input type="text" name="" placeholder="Adresse employeur" class="champs_saisi">
-                    <input type="number" name="" placeholder="CNI employeur" class="champs_saisi">
+                    <input type="text" name="" placeholder="Nom Employeur">
+                    <input type="text" name="" placeholder="Raison social" >
+                    <input type="text" name="" placeholder="Adresse employeur">
+                    <input type="number" name="" placeholder="CNI employeur">
                 </div>
                 <div class="hidden compte_bloque">
-                    <input type="date" name="" placeholder="Date de fin blocage" class="champs_saisi">
+                    <input type="date" name="" placeholder="Date de fin blocage">
                 </div>
                 <input type="submit" class="button_valider" value="Creer le compte">
         </form>
-        <form action="page.php" class="Entreprise hidden">
-            <h3>Type de compte</h3>
-                <div >
-                <input type="radio" name="typeCompte" value="Compte Courant" id="compte_courant" class="typeCompte"/> Compte Courant <br>
-                <input type="radio" name="typeCompte" value="Compte Epargne" id="compte_epargne" class="typeCompte"/>  Compte Epargne <br>
-                <input type="radio" name="typeCompte" value="Compte Bloque" id="compte_bloque" class="typeCompte"/> Compte Bloque<br>
-                </div>
-
-                <div class="champs">
+        <form name="form3" class="Entreprise hidden ClientEntreprise">
+            <h3>Formulaire Ajout Client Entreprise</h3>
+                
                     <input type="text" name=""  placeholder="Nom Entreprise" class="champs_saisi"> <br>
-                    <input type="text" name="" placeholder="Adresse" class="champs_saisi"> <br>
-                
-                    <input type="text" name="" placeholder="Email" class="champs_saisi"> <br>
-               
-                    <input type="text" name="" placeholder="Adresse" class="champs_saisi"> <br>
-                
+                    <input type="text" name="" placeholder="Adresse" class="champs_saisi"> <br>    
+                    <input type="email" name="" placeholder="Email" class="champs_saisi" onblur="verifMail(this)"> <br>
                     <input type="number" name="" placeholder="Registre de commerce"class="champs_saisi" > <br>
-               
-                    <input type="email" name="" placeholder="NINEA" class="champs_saisi"> <br>
+                    <input type="text" name="" placeholder="NINEA" class="champs_saisi"> <br>
                     <input type="number" name="" placeholder="Telephone" id="champs_saisi"> <br>
-                </div>
-                <input type="submit" class="button_valider" value="Creer le compte">
+                    <input type="submit" class="button_valider" value="Creer le compte">
                
         </form>
+        <p style="color: red;" id="erreur"></p>
 
 
 
