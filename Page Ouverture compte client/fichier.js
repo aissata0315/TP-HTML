@@ -39,6 +39,7 @@ for (i = 0; i < radios.length; i++) {
 // traitement choix ajouter client entreprise
 document.forms['form3'].addEventListener('submit', function(e)
 {
+    e.preventDefault();
     var erreur;
     var inputs = document.querySelectorAll('.ClientEntreprise input');
     console.log(inputs);
@@ -72,16 +73,29 @@ document.forms['form3'].addEventListener('submit', function(e)
 // traitement choix ajouter client particulier
 document.forms['form2'].addEventListener('submit', function(e)
 {
+    e.preventDefault();
     
     var erreur;
-    var inputs = document.querySelectorAll('.clientParticulier input');
+    var choix = document.querySelectorAll('.typeCompte');
+    var typeCompteSelectionnee;
+    for (i=0; i< choix.length; i++){
+        if ( choix[i].checked == true)
+        {
+             typeCompteSelectionnee = choix[i].getAttribute('id');
+            break;
+        }
+
+    }
+    var inputs = document.querySelectorAll('.'+typeCompteSelectionnee+' input, .input_commun input');
     for (i=0;i < inputs.length; i++){
         if (!inputs[i].value){
             erreur = 'Veuillez renseigez tous les champs!';
             break;
+    
 
         }
     }
+
     if (erreur) {
 		document.getElementById("erreur").innerHTML = erreur;
 		return false;
@@ -90,7 +104,7 @@ document.forms['form2'].addEventListener('submit', function(e)
         document.getElementById("erreur").innerHTML = "";
         alert('Compte creer!');
 
-        var inputs = document.querySelectorAll('.ClientParticulier input');
+        var inputs = document.querySelectorAll('.'+typeCompteSelectionnee+' input, .input_commun input');
         for (i=0;i < inputs.length; i++){
             inputs[i].value = "";
         }

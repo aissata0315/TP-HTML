@@ -38,20 +38,16 @@
                     <input type="radio" name="typeCompte" value="Compte Epargne" id="compte_epargne" class="typeCompte"/>  Compte Epargne <br>
                     <input type="radio" name="typeCompte" value="Compte Bloque" id="compte_bloque" class="typeCompte"/> Compte Bloque<br>
                 </div>
-                <div class="champs">
+                <div class="input_commun input_courant input_bloque input_epargne compte_epargne">
                     <input type="text" name=""  placeholder="Numero du compte"> <br>
                     <input type="text" name="" placeholder="Nom Du client"> <br>
-                
                     <input type="text" name="" placeholder="Prenom du client"> <br>
-               
                     <input type="text" name="" placeholder="Adresse"> <br>
-                
                     <input type="number" name="" placeholder="CNI" onblur="verifCNI(this)"> <br>
-               
                     <input type="email" name="" placeholder="Email" onblur="verifMail(this)"> <br>
                     <input type="number" name="" placeholder="Telephone" onblur="verifTEL"> <br>
                 </div>
-                <div class="hidden compte_courant">
+                <div class="input_courant hidden compte_courant">
                     <input type="number" name="" placeholder="Salaire">
                     <input type="text" name="" placeholder="Profession">
                     <h4>Information de l'employeur:</h4>
@@ -60,7 +56,7 @@
                     <input type="text" name="" placeholder="Adresse employeur">
                     <input type="number" name="" placeholder="CNI employeur">
                 </div>
-                <div class="hidden compte_bloque">
+                <div class="input_bloque hidden compte_bloque">
                     <input type="date" name="" placeholder="Date de fin blocage">
                 </div>
                 <input type="submit" class="button_valider" value="Creer le compte">
