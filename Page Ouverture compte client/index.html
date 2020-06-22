@@ -33,13 +33,13 @@
         </form>
         <form id="form2" class="Particulier hidden clientParticulier">
             <h3>Type de compte</h3>
-                <div>
+                <div class="radios">
                     <input type="radio" name="typeCompte" value="Compte Courant" id="compte_courant" class="typeCompte"/> Compte Courant <br>
                     <input type="radio" name="typeCompte" value="Compte Epargne" id="compte_epargne" class="typeCompte"/>  Compte Epargne <br>
                     <input type="radio" name="typeCompte" value="Compte Bloque" id="compte_bloque" class="typeCompte"/> Compte Bloque<br>
                 </div>
-                <div class="input_commun input_courant input_bloque input_epargne compte_epargne">
-                    <input type="text" name=""  placeholder="Numero du compte"> <br>
+                <div class="input_commun  compte_epargne">
+                    <input type="text" name="" placeholder="Numero du compte"> <br>
                     <input type="text" name="" placeholder="Nom Du client"> <br>
                     <input type="text" name="" placeholder="Prenom du client"> <br>
                     <input type="text" name="" placeholder="Adresse"> <br>
@@ -47,17 +47,17 @@
                     <input type="email" name="" placeholder="Email" onblur="verifMail(this)"> <br>
                     <input type="number" name="" placeholder="Telephone" onblur="verifTEL"> <br>
                 </div>
-                <div class="input_courant hidden compte_courant">
-                    <input type="number" name="" placeholder="Salaire">
-                    <input type="text" name="" placeholder="Profession">
+                <div class="hidden compte_courant">
+                    <input type="number" name="" placeholder="Salaire"> <br>
+                    <input type="text" name="" placeholder="Profession"> <br>
                     <h4>Information de l'employeur:</h4>
-                    <input type="text" name="" placeholder="Nom Employeur">
-                    <input type="text" name="" placeholder="Raison social" >
-                    <input type="text" name="" placeholder="Adresse employeur">
-                    <input type="number" name="" placeholder="CNI employeur">
+                    <input type="text" name="" placeholder="Nom Employeur"> <br>
+                    <input type="text" name="" placeholder="Raison social" ><br>
+                    <input type="text" name="" placeholder="Adresse employeur"><br>
+                    <input type="number" name="" placeholder="CNI employeur"><br>
                 </div>
-                <div class="input_bloque hidden compte_bloque">
-                    <input type="date" name="" placeholder="Date de fin blocage">
+                <div class="hidden compte_bloque">
+                    <input type="date" name="" placeholder="Date de fin blocage"><br>
                 </div>
                 <input type="submit" class="button_valider" value="Creer le compte">
         </form>
@@ -66,7 +66,8 @@
                 
                     <input type="text" name=""  placeholder="Nom Entreprise" class="champs_saisi"> <br>
                     <input type="text" name="" placeholder="Adresse" class="champs_saisi"> <br>    
-                    <input type="email" name="" placeholder="Email" class="champs_saisi" onblur="verifMail(this)"> <br>
+                    <input type="text" name="" placeholder="Email" class="champs_saisi" onblur="verifMail(this)"> <br>
+                    <span style="color: red;" id="erreurmail"> </span>
                     <input type="number" name="" placeholder="Registre de commerce"class="champs_saisi" > <br>
                     <input type="text" name="" placeholder="NINEA" class="champs_saisi"> <br>
                     <input type="number" name="" placeholder="Telephone" id="champs_saisi"> <br>

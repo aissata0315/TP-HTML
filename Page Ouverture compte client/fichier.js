@@ -5,7 +5,6 @@
         for (i = 0; i < radios1.length; i++){
         radios1[i].addEventListener('click',function(){
          var id = this.getAttribute('id');
-         console.log(id);
          var formTypeClient = document.querySelector('.'+ id);
          var hiddens = document.querySelectorAll('.hidden');
          for (i = 0; i < hiddens.length; i++) {
@@ -30,8 +29,7 @@ for (i = 0; i < radios.length; i++) {
         var champsCompteBloque = document.querySelector('.compte_bloque');
         champsCompteBloque.style.display = 'none';
         divTypeCompte.style.display = 'block';
-        var button_valider = document.querySelector('.button_valider')
-        button_valider.style.display = 'block';
+       
     });
 }
 
@@ -41,6 +39,7 @@ document.forms['form3'].addEventListener('submit', function(e)
 {
     e.preventDefault();
     var erreur;
+    /* selectionner et parcourir input*/
     var inputs = document.querySelectorAll('.ClientEntreprise input');
     console.log(inputs);
     for (i=0;i < inputs.length; i++){
@@ -50,7 +49,6 @@ document.forms['form3'].addEventListener('submit', function(e)
 
         }
     }
-    console.log(erreur);
     if (erreur) {
 		document.getElementById("erreur").innerHTML = erreur;
         return false;
@@ -59,7 +57,7 @@ document.forms['form3'].addEventListener('submit', function(e)
        
         document.getElementById("erreur").innerHTML = "";
         alert('Compte creer!');
-
+        /* apres soumission on vide les inputs*/
         var inputs = document.querySelectorAll('.ClientEntreprise input');
         console.log(inputs);
         for (i=0;i < inputs.length; i++){
@@ -76,6 +74,7 @@ document.forms['form2'].addEventListener('submit', function(e)
     e.preventDefault();
     
     var erreur;
+    /*recuperer le radio choisi*/
     var choix = document.querySelectorAll('.typeCompte');
     var typeCompteSelectionnee;
     for (i=0; i< choix.length; i++){
@@ -86,6 +85,7 @@ document.forms['form2'].addEventListener('submit', function(e)
         }
 
     }
+    /* recuperer les inputs correspondant aux type de compte choisi*/
     var inputs = document.querySelectorAll('.'+typeCompteSelectionnee+' input, .input_commun input');
     for (i=0;i < inputs.length; i++){
         if (!inputs[i].value){
@@ -103,7 +103,7 @@ document.forms['form2'].addEventListener('submit', function(e)
        
         document.getElementById("erreur").innerHTML = "";
         alert('Compte creer!');
-
+        /* on vide les inputs apres soumission*/
         var inputs = document.querySelectorAll('.'+typeCompteSelectionnee+' input, .input_commun input');
         for (i=0;i < inputs.length; i++){
             inputs[i].value = "";
@@ -114,16 +114,20 @@ document.forms['form2'].addEventListener('submit', function(e)
 
 // Les fonctions de verifications de champs
 
-function surligne(champ, erreur)
+function surligne(champ, erreur) 
 {
-   if(erreur)
-      champ.style.backgroundColor = "#fba";
+   if(erreur){
+    
+    champ.style.backgroundColor = "#fba";
+      
+    }
+      
    else
       champ.style.backgroundColor = "";
 }
 
 function verifMail(champ)
-{
+{  
    var regex = /^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
    if(!regex.test(champ.value))
    {
