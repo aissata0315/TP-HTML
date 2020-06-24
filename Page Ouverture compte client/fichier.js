@@ -18,7 +18,6 @@
 
  // Pour selectionner le type de compte(courant, bloqué, epargne)
 
-
 var radios = document.querySelectorAll('.typeCompte');
 for (i = 0; i < radios.length; i++) {
     radios[i].addEventListener('click', function () {
@@ -26,21 +25,39 @@ for (i = 0; i < radios.length; i++) {
         var divTypeCompte = document.querySelector('.' + id);
         var champsCompteCourant = document.querySelector('.compte_courant');
         champsCompteCourant.style.display = 'none';
+        var champsCompteEpargne = document.querySelector('.compte_epargne');
+        champsCompteEpargne.style.display = 'none';
         var champsCompteBloque = document.querySelector('.compte_bloque');
         champsCompteBloque.style.display = 'none';
         divTypeCompte.style.display = 'block';
        
     });
 }
+/* Pour afficher le formulaire de creation clients en fonction du choix de type de client(salarier ou non salarier)*/
+var radios = document.querySelectorAll('.type_client');
+for (i = 0; i < radios.length; i++) {
+    radios[i].addEventListener('click', function () {
+        var id = this.getAttribute('id');
+        console.log(id);
+        var divTypeClient= document.querySelector('.' + id);
+        var champsClientSalarier= document.querySelector('.salarier');
+        champsClientSalarier.style.display = 'none';
+        var champsClientnonsalarier = document.querySelector('.non_salarier');
+        champsClientnonsalarier.style.display = 'none';
+        divTypeClient.style.display = 'block';
+       
+    });
+}
 
 
-// traitement choix ajouter client entreprise
+
+/*verification input entreprise */
 document.forms['form3'].addEventListener('submit', function(e)
 {
     e.preventDefault();
     var erreur;
     /* selectionner et parcourir input*/
-    var inputs = document.querySelectorAll('.ClientEntreprise input');
+    var inputs = document.querySelectorAll('.ClientEntreprise input ');
     console.log(inputs);
     for (i=0;i < inputs.length; i++){
         if (!inputs[i].value){
@@ -56,7 +73,7 @@ document.forms['form3'].addEventListener('submit', function(e)
     } else{
        
         document.getElementById("erreur").innerHTML = "";
-        alert('Compte creer!');
+        alert('Client Enregistrer!');
         /* apres soumission on vide les inputs*/
         var inputs = document.querySelectorAll('.ClientEntreprise input');
         console.log(inputs);
@@ -68,49 +85,72 @@ document.forms['form3'].addEventListener('submit', function(e)
      
 });
 
-// traitement choix ajouter client particulier
+
+/*verification input formulaire non salarier*/
 document.forms['form2'].addEventListener('submit', function(e)
 {
     e.preventDefault();
-    
     var erreur;
-    /*recuperer le radio choisi*/
-    var choix = document.querySelectorAll('.typeCompte');
-    var typeCompteSelectionnee;
-    for (i=0; i< choix.length; i++){
-        if ( choix[i].checked == true)
-        {
-             typeCompteSelectionnee = choix[i].getAttribute('id');
-            break;
-        }
-
-    }
-    /* recuperer les inputs correspondant aux type de compte choisi*/
-    var inputs = document.querySelectorAll('.'+typeCompteSelectionnee+' input, .input_commun input');
+var inputs = document.querySelectorAll('.non_salarier input ');
+    console.log(inputs);
     for (i=0;i < inputs.length; i++){
         if (!inputs[i].value){
             erreur = 'Veuillez renseigez tous les champs!';
             break;
-    
 
         }
     }
-
     if (erreur) {
 		document.getElementById("erreur").innerHTML = erreur;
-		return false;
+        return false;
+        
     } else{
        
         document.getElementById("erreur").innerHTML = "";
-        alert('Compte creer!');
-        /* on vide les inputs apres soumission*/
-        var inputs = document.querySelectorAll('.'+typeCompteSelectionnee+' input, .input_commun input');
+        alert('Client Enregistrer!');
+        /* apres soumission on vide les inputs*/
+        var inputs = document.querySelectorAll('.clientParticulier input');
+        console.log(inputs);
         for (i=0;i < inputs.length; i++){
             inputs[i].value = "";
         }
 
      }
+     
+     
 });
+
+/*verification input formulaire salarier*/
+document.forms['form2'].addEventListener('submit', function(e)
+{
+    e.preventDefault();
+    var erreur;
+var inputs = document.querySelectorAll('.clientParticulier input  .salarier input ');
+console.log(inputs);
+for (i=0;i < inputs.length; i++){
+    if (!inputs[i].value){
+        erreur = 'Veuillez renseigez tous les champs!';
+        break;
+
+    }
+}
+if (erreur) {
+    document.getElementById("erreur").innerHTML = erreur;
+    return false;
+    
+} else{
+   
+    document.getElementById("erreur").innerHTML = "";
+    alert('Client Enregistrer!');
+    /* apres soumission on vide les inputs*/
+    var inputs = document.querySelectorAll('.salarier input');
+    console.log(inputs);
+    for (i=0;i < inputs.length; i++){
+        inputs[i].value = "";
+    }
+
+ }
+} );
 
 // Les fonctions de verifications de champs
 

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Page Ouverture de Compte</title>
+    <title>Gestion clients</title>
 </head>
 <body>
     <header>
@@ -32,14 +32,14 @@
         </div>
         </form>
         <form id="form2" class="Particulier hidden clientParticulier">
-            <h3>Type de compte</h3>
+            <h3>Salarier ou Non Salarier</h3>
                 <div class="radios">
-                    <input type="radio" name="typeCompte" value="Compte Courant" id="compte_courant" class="typeCompte"/> Compte Courant <br>
-                    <input type="radio" name="typeCompte" value="Compte Epargne" id="compte_epargne" class="typeCompte"/>  Compte Epargne <br>
-                    <input type="radio" name="typeCompte" value="Compte Bloque" id="compte_bloque" class="typeCompte"/> Compte Bloque<br>
+                    <input type="radio" name="type_client" value="Compte Courant" id="salarier" class="type_client"/> Client Salarier <br>
+                    <input type="radio" name="type_client" value="Compte Epargne" id="non_salarier" class="type_client"/> Client non Salarier<br>
+                    
                 </div>
-                <div class="input_commun  compte_epargne">
-                    <input type="text" name="" placeholder="Numero du compte"> <br>
+                <div class="hidden  non_salarier">
+                    <h4>Formulaire Ajout Client Non Salarier</h4>
                     <input type="text" name="" placeholder="Nom Du client"> <br>
                     <input type="text" name="" placeholder="Prenom du client"> <br>
                     <input type="text" name="" placeholder="Adresse"> <br>
@@ -47,7 +47,15 @@
                     <input type="email" name="" placeholder="Email" onblur="verifMail(this)"> <br>
                     <input type="number" name="" placeholder="Telephone" onblur="verifTEL"> <br>
                 </div>
-                <div class="hidden compte_courant">
+                <div class="hidden  salarier">
+                    <h4>Formulaire Ajout Client Salarier</h4>
+
+                    <input type="text" name="" placeholder="Nom Du client"> <br>
+                    <input type="text" name="" placeholder="Prenom du client"> <br>
+                    <input type="text" name="" placeholder="Adresse"> <br>
+                    <input type="number" name="" placeholder="CNI" onblur="verifCNI(this)"> <br>
+                    <input type="email" name="" placeholder="Email" onblur="verifMail(this)"> <br>
+                    <input type="number" name="" placeholder="Telephone" onblur="verifTEL"> <br>
                     <input type="number" name="" placeholder="Salaire"> <br>
                     <input type="text" name="" placeholder="Profession"> <br>
                     <h4>Information de l'employeur:</h4>
@@ -63,7 +71,6 @@
         </form>
         <form name="form3" class="Entreprise hidden ClientEntreprise">
             <h3>Formulaire Ajout Client Entreprise</h3>
-                
                     <input type="text" name=""  placeholder="Nom Entreprise" class="champs_saisi"> <br>
                     <input type="text" name="" placeholder="Adresse" class="champs_saisi"> <br>    
                     <input type="text" name="" placeholder="Email" class="champs_saisi" onblur="verifMail(this)"> <br>
